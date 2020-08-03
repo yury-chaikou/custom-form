@@ -13,6 +13,12 @@ function custom_form_with_fields_add_admin_pages() {
 		'manage_options', 'custom_form_with_fields_options_page',
 		'custom_form_with_fields_options_page' );
 }
+function shortcode() {
+	add_options_page( 'custom form with fields Options', 'custom form with fields shortcode',
+		'manage_options', 'your_shortcode',
+		'your_shortcode' );
+}
+
 
 wp_register_style( 'custom_form_with_fields',
 	'/wp-content/plugins/custom_form_with_fields/assets/css/style.css' );
@@ -126,5 +132,9 @@ function custom_form_with_fields_options_page() {
 		}
 	}
 }
-
+function your_shortcode(){
+	echo '<h1>Your code is</h1> <h2>[custom_form_shortcode]</h2>';
+}
 add_action( 'admin_menu', 'custom_form_with_fields_add_admin_pages' );
+add_action( 'admin_menu', 'shortcode' );
+add_shortcode('custom_form_shortcode', 'custom_form_with_fields_options_page');
